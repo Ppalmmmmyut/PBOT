@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="ros_robot">
+    <xacro:include filename="$(find ros_robot_description)/urdf/properties.xacro"/>
+    <xacro:include filename="$(find ros_robot_description)/urdf/base.xacro"/>
+    <xacro:include filename="$(find ros_robot_description)/urdf/wheel.xacro"/>
+    <xacro:include filename="$(find ros_robot_description)/urdf/camera.xacro"/>
+    <xacro:include filename="$(find ros_robot_description)/urdf/plidar.xacro"/>
+
+    <xacro:base/>
+    <xacro:wheel 
+        name="left" 
+        translation="0 ${WHEEL_SEPARATION / 2} 0" 
+        rotation="0 0 0" 
+        parent="base_link"/>
+    <xacro:wheel 
+        name="right" 
+        translation="0 ${-WHEEL_SEPARATION / 2} 0" 
+        rotation="0 0 0" 
+        parent="base_link"/>
+
+    <xacro:camera/>
+    <xacro:plidar/>
+</robot>

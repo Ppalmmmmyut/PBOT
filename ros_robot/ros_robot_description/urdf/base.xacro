@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="robot_base">
+    <xacro:include filename="$(find ros_robot_description)/urdf/properties.xacro"/>
+    <xacro:macro name="base" params="">
+        <!-- base_footlink connect to base_link -->
+        <link name="base_footprint"/>
+        <joint name="base_footprint_to_base_link" type="fixed">
+            <origin xyz="0.0 0.0 0.1" rpy="0.0 0.0 0.0"/>
+            <parent link="base_footprint"/>
+            <child link="base_link"/>
+            <!--<axis xyz="0.0 0.0 0.0"/>-->
+            <!--<limit lower="0.0" upper="0.0" effort="0.0" velocity="0.0"/>-->
+        </joint>
+        <!--</link>-->
+
+        <link name="base_link">
+            <inertial>
+                <origin xyz="${BASE_COM}" rpy="0.0 0.0 0.0"/>
+                <mass value="${BASE_M}"/>
+                <inertia ixx="${BASE_Ixx}" ixy="${BASE_Ixy}" ixz="${BASE_Ixz}" iyy="${BASE_Iyy}" iyz="${BASE_Iyz}" izz="${BASE_Izz}"/>
+            </inertial>
+            <visual>
+                <origin xyz="-0.1 0.0 0.05" rpy="0.0 0.0 0.0"/>
+                <geometry>
+                    <box size="0.6 ${WHEEL_SEPARATION - 0.02} 0.15"/>
+                </geometry>
+            </visual>
+            <collision>
+                <origin xyz="-0.1 0.0 0.05" rpy="0.0 0.0 0.0"/>
+                <geometry>
+                    <box size="0.6 ${WHEEL_SEPARATION - 0.02} 0.15"/>
+                </geometry>
+            </collision>
+        </link>
+
+        <!-- base_link connect to caster -->
+        <joint name="base_link_to_caster" type="fixed">
+            <origin xyz="-0.3 0.0 -0.05" rpy="0.0 0.0 0.0"/>
+            <parent link="base_link"/>
+            <child link="caster"/>
+            <!--<axis xyz="0.0 0.0 0.0"/>-->
+            <!--<limit lower="0.0" upper="0.0" effort="0.0" velocity="0.0"/>-->
+        </joint>
+
+        <link name="caster">
+            <visual>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <geometry>
+                    <sphere radius="0.05"/>
+                </geometry>
+            </visual>
+            <collision>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <geometry>
+                    <sphere radius="0.05"/>
+                </geometry>
+            </collision>
+        </link>
+        <gazebo reference="base_link">
+            <mu1>0.3</mu1>
+            <mu2>0.3</mu2>
+            <material>Gazebo/Red</material>
+        </gazebo>
+        <gazebo reference="caster">
+            <mu1>0</mu1>
+            <mu2>0</mu2>
+            <material>Gazebo/Black</material>
+        </gazebo>
+    </xacro:macro>
+</robot>

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <!--  กำหนดค่าตัวแปรทั้งหมด  -->
+    <xacro:property name="PI" value="3.1415926535897931"></xacro:property>
+    <xacro:property name="WHEEL_RADIUS" value="0.1"></xacro:property>
+
+    <xacro:property name="U_MAX" value="10.0"></xacro:property>
+    <xacro:property name="V_MAX" value="20.0"></xacro:property>
+    <xacro:property name="WHEEL_JOINT_DAMP" value="0.3"></xacro:property>
+    <xacro:property name="WHEEL_SEPARATION" value="0.42"></xacro:property>
+
+    <!--Inertia-->
+    <xacro:property name="BASE_COM" value="-0.1 0 -0.05"></xacro:property>
+    <xacro:property name="BASE_M" value="3"></xacro:property>
+    <xacro:property name="BASE_Ixx" value="0.009607873"></xacro:property>
+    <xacro:property name="BASE_Ixy" value="0.00018491"></xacro:property>
+    <xacro:property name="BASE_Ixz" value="0.000352663"></xacro:property>
+    <xacro:property name="BASE_Iyy" value="0.010242986"></xacro:property>
+    <xacro:property name="BASE_Iyz" value="0.00027809"></xacro:property>
+    <xacro:property name="BASE_Izz" value="0.009654254"></xacro:property>
+
+    <xacro:property name="WHEEL_COM" value="0 0 0"></xacro:property>
+    <xacro:property name="WHEEL_M" value="0.21"></xacro:property>
+    <xacro:property name="WHEEL_Ixx" value="0.00012052"></xacro:property>
+    <xacro:property name="WHEEL_Ixy" value="0.0"></xacro:property>
+    <xacro:property name="WHEEL_Ixz" value="0.0"></xacro:property>
+    <xacro:property name="WHEEL_Iyy" value="0.0029397"></xacro:property>
+    <xacro:property name="WHEEL_Iyz" value="0.0"></xacro:property>
+    <xacro:property name="WHEEL_Izz" value="0.00012052"></xacro:property>
+
+    <xacro:property name="camera_link" value="0.05" /> <!-- Size of square 'camera' box -->
+</robot>

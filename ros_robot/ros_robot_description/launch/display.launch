@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<launch>
+    <param name="use_gui" value="True"/>
+    <param name="robot_description" command="$(find xacro)/xacro $(find ros_robot_description)/urdf/ros_robot.xacro"/>
+    <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher"></node>
+    <node pkg="joint_state_publisher" type="joint_state_publisher" name="joint_state_publisher"></node>
+    <node pkg="rviz" type="rviz" name="rviz" args="-d $(find ros_robot_description)/rviz/display.rviz"></node>
+    
+</launch>
